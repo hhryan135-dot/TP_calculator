@@ -19,7 +19,12 @@ if st.button("Calcola"):
 df = pd.DataFrame(st.session_state.history)
 st.dataframe(df)
 
+if st.button("undo):
+    df = df.iloc[:-1]
+            
+
 csv = df.to_csv(sep=";", index=False)
+
 
 st.download_button(
     label="Esporta in CSV",
