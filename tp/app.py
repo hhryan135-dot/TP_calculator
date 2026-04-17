@@ -19,5 +19,11 @@ if st.button("Calcola"):
 df = pd.DataFrame(st.session_state.history)
 st.dataframe(df)
 
+csv = df.to_csv(index=False)
 
+st.download_button(
+    label="Esporta in CSV",
+    data=csv,
+    file_name="dati.csv",
+    mime="text/csv"
 
