@@ -19,7 +19,7 @@ if st.button("Calcola"):
 df = pd.DataFrame(st.session_state.history)
 st.dataframe(df)
 
-if st.button("undo):
+if st.button("undo"):
     df = df.iloc[:-1]
             
 
