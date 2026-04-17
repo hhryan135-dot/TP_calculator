@@ -15,5 +15,7 @@ if st.button("Calcola"):
     }
     df = pd.DataFrame(data)
 
+    st.dataframe(df)
 
-st.dataframe(df)
+
+
