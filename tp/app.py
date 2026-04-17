@@ -20,8 +20,9 @@ df = pd.DataFrame(st.session_state.history)
 st.dataframe(df)
 
 if st.button("undo"):
-    df = df.iloc[:-1]
-    st.dataframe(df)
+    if st.session_state.history:
+        st.session_state.history.pop()
+        st.rerun()
             
 
 csv = df.to_csv(sep=";", index=False)
