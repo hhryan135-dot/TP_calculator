@@ -9,8 +9,8 @@ if st.button("Calcola"):
     result = round((2 * math.sqrt(((diff_x ** 2) + (diff_y ** 2)))), 3)
     st.success(result)
     data = {
-    "Scostamento in x" : [diff_x,]
-    "Scostamento in y" : [diff_y,]
+    "Scostamento in x" : [diff_x],
+    "Scostamento in y" : [diff_y],
     "True Position" : [result]
     }
     df = pd.DataFrame(data)
