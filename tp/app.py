@@ -26,4 +26,4 @@ st.download_button(
     data=csv,
     file_name="dati.csv",
     mime="text/csv"
-
+)
