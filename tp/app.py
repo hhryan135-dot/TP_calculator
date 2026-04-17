@@ -2,6 +2,8 @@ import streamlit as st
 import math
 import pandas as pd
 
+st.session_state.setdefault("history", [])
+
 diff_x = st.number_input("Scostamento in x", format="%.3f")
 diff_y = st.number_input("Scostamento in y", format="%.3f")
 
