@@ -13,13 +13,13 @@ if st.button("Calcola"):
     st.session_state.history.append({
         "Scostamento in x": diff_x,
         "Scostamento in y": diff_y,
-        "True Position": result
+        "Esatta Posizione": result
     })
 
 df = pd.DataFrame(st.session_state.history)
 st.dataframe(df)
 
-if st.button("undo"):
+if st.button("Indietro"):
     if st.session_state.history:
         st.session_state.history.pop()
         st.rerun()
