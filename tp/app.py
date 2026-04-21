@@ -27,7 +27,7 @@ def plot_posizione(diff_x, diff_y, tp_tol, result):
     ax.axvline(0)
 
     # Limiti dinamici
-    lim = max(tp_tol, abs(diff_x), abs(diff_y)) * 1.2
+    lim = max(tp_tol, abs(diff_x), abs(diff_y))
     ax.set_xlim(-lim, lim)
     ax.set_ylim(-lim, lim)
 
