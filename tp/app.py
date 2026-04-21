@@ -28,8 +28,8 @@ st.dataframe(df)
 
 if st.button("Indietro"):
     if st.session_state.history:
-        st.session_state.history.pop()
-        st.rerun()
+       st.session_state.history.pop()
+       st.rerun()
             
 
 csv = df.to_csv(sep=";", index=False)
