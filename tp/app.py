@@ -1,6 +1,9 @@
 import streamlit as st
 import math
 import pandas as pd
+from PIL import Image, ImageDraw
+import io
+
 
 st.title("Calcolatore di esatta posizione")
 
