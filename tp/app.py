@@ -2,6 +2,8 @@ import streamlit as st
 import math
 import pandas as pd
 
+st.write("Calcolatore di esatta posizione")
+
 st.session_state.setdefault("history", [])
 
 diff_x = st.number_input("Scostamento in x", format="%.3f")
