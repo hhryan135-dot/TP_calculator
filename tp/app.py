@@ -14,7 +14,7 @@ if st.button("Calcola"):
     else:
         result = round((2 * math.sqrt(((diff_x ** 2) + (diff_y ** 2)))), 3)
         st.success(result)
-        out_tol = result - tp_tol if result <= tp_tol else 0
+        out_tol = result - tp_tol if result >= tp_tol else 0
         st.session_state.history.append({
             "Scostamento in x": diff_x,
             "Scostamento in y": diff_y,
