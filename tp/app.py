@@ -1,46 +1,6 @@
 import streamlit as st
 import math
 import pandas as pd
-from PIL import Image, ImageDraw
-import io
-
-def genera_icona(diff_x, diff_y, tp_tol, result):
-    size = 100
-    center = size // 2
-
-    img = Image.new("RGB", (size, size), "white")
-    draw = ImageDraw.Draw(img)
-
-    # cerchio tolleranza
-    r = int((tp_tol / tp_tol) * (size * 0.4))  # normalizzato
-    draw.ellipse(
-        (center - r, center - r, center + r, center + r),
-        outline="black",
-        width=2
-    )
-
-    # assi
-    draw.line((0, center, size, center), fill="black")
-    draw.line((center, 0, center, size), fill="black")
-
-    # punto (scalato)
-    scale = size * 0.4 / tp_tol if tp_tol != 0 else 1
-    px = center + diff_x * scale
-    py = center - diff_y * scale
-
-    # colore dinamico
-    ratio = min(result / tp_tol, 1.5) if tp_tol != 0 else 0
-    if ratio <= 1:
-        color = (int(255 * ratio), 255, 0)
-    else:
-        color = (255, int(255 * (2 - ratio)), 0)
-
-    draw.ellipse((px-4, py-4, px+4, py+4), fill=color)
-
-    # converti in bytes
-    buf = io.BytesIO()
-    img.save(buf, format="PNG")
-    return buf.getvalue()
 
 st.title("Calcolatore di esatta posizione")
 
@@ -66,24 +26,7 @@ if st.button("Calcola"):
         })
 
 df = pd.DataFrame(st.session_state.history)
-
-if not df.empty:
-    df["Grafico"] = df.apply(
-        lambda row: genera_icona(
-            row["Scostamento in x"],
-            row["Scostamento in y"],
-            row["Tolleranza di posizione"],
-            row["Esatta Posizione"]
-        ),
-        axis=1
-    )
-
-st.dataframe(
-    df,
-    column_config={
-        "Grafico": st.column_config.ImageColumn("Grafico")
-    }
-)
+st.dataframe(df)
 
 if st.button("Indietro"):
     if st.session_state.history:
