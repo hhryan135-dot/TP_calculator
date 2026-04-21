@@ -11,13 +11,14 @@ tp_tol = st.number_input("Tolleranza di posizione", format="%.3f")
 if st.button("Calcola"):
     if tp_tol == 0:
         st.error("Inserisci una tolleranza di posizione")
-    result = round((2 * math.sqrt(((diff_x ** 2) + (diff_y ** 2)))), 3)
-    st.success(result)
-    st.session_state.history.append({
-        "Scostamento in x": diff_x,
-        "Scostamento in y": diff_y,
-        "Esatta Posizione": result
-    })
+    else:
+        result = round((2 * math.sqrt(((diff_x ** 2) + (diff_y ** 2)))), 3)
+        st.success(result)
+        st.session_state.history.append({
+            "Scostamento in x": diff_x,
+            "Scostamento in y": diff_y,
+            "Esatta Posizione": result
+        })
 
 df = pd.DataFrame(st.session_state.history)
 st.dataframe(df)
